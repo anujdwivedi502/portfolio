@@ -5,8 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tarun Dwivedi - Full Stack Developer</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 </head>
 <body>
+    <!-- Particle System -->
+    <div class="particles-container">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
     <!-- Floating Navigation -->
     <nav class="floating-nav">
         <div class="nav-container">
@@ -24,24 +39,25 @@
             <div class="floating-orb orb-1"></div>
             <div class="floating-orb orb-2"></div>
             <div class="floating-orb orb-3"></div>
+            <div class="floating-orb orb-4"></div>
         </div>
         <div class="hero-content">
             <div class="glass-card hero-card">
                 <h1 class="hero-title">
-                    <span class="text-animate">Tarun Dwivedi</span>
+                    <span class="typing-text">Tarun Dwivedi</span>
                 </h1>
                 <p class="hero-subtitle">
-                    <span class="text-animate-delay">Full Stack Developer</span>
+                    <span class="text-animate-delay bounce-in">Full Stack Developer</span>
                 </p>
                 <p class="hero-location">
-                    <span class="text-animate-delay-2">Greater Noida, Uttar Pradesh, India</span>
+                    <span class="text-animate-delay-2 slide-in-left">Greater Noida, Uttar Pradesh, India</span>
                 </p>
                 <p class="hero-description">
-                    <span class="text-animate-delay-3">A passionate programmer fascinated by how computer technology has brought changes to our lives. I love exploring new tech stacks and leveraging them to build innovative solutions.</span>
+                    <span class="text-animate-delay-3 fade-in-up">Passionate Full Stack Developer & Tech Enthusiast fascinated by how computer technology has brought changes to our lives. I love exploring new tech stacks and leveraging them to build innovative solutions.</span>
                 </p>
                 <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary glass-btn">View My Work</a>
-                    <a href="https://github.com/itarun2005" target="_blank" class="btn btn-secondary glass-btn">GitHub Profile</a>
+                    <a href="#projects" class="btn btn-primary glass-btn glow-effect">View My Work</a>
+                    <a href="https://github.com/itarun2005" target="_blank" class="btn btn-secondary glass-btn pulse-effect">GitHub Profile</a>
                 </div>
             </div>
         </div>
@@ -57,7 +73,7 @@
             <div class="about-content">
                 <div class="about-card glass-card">
                     <div class="about-image">
-                        <div class="image-placeholder">
+                        <div class="image-placeholder rotating-border">
                             <span class="profile-initial">TD</span>
                         </div>
                     </div>
@@ -71,7 +87,7 @@
                             </div>
                             <div class="detail-item">
                                 <span class="detail-label">Email:</span>
-                                <span class="detail-value">tarun.dwivedi@example.com</span>
+                                <span class="detail-value">anujdwivedi502@gmail.com</span>
                             </div>
                             <div class="detail-item">
                                 <span class="detail-label">GitHub:</span>
@@ -81,23 +97,23 @@
                     </div>
                 </div>
                 <div class="services-grid">
-                    <div class="service-card glass-card">
-                        <div class="service-icon">🔧</div>
+                    <div class="service-card glass-card hover-lift">
+                        <div class="service-icon floating-icon">🔧</div>
                         <h4>Backend Development</h4>
                         <p>Building robust server-side applications with Java, Python, PHP, and NodeJS</p>
                     </div>
-                    <div class="service-card glass-card">
-                        <div class="service-icon">💻</div>
+                    <div class="service-card glass-card hover-lift">
+                        <div class="service-icon floating-icon">💻</div>
                         <h4>Frontend Development</h4>
                         <p>Creating modern, responsive web applications with React, JavaScript, and CSS3</p>
                     </div>
-                    <div class="service-card glass-card">
-                        <div class="service-icon">🗄️</div>
+                    <div class="service-card glass-card hover-lift">
+                        <div class="service-icon floating-icon">🗄️</div>
                         <h4>Database Management</h4>
                         <p>Designing and optimizing databases with MySQL, MongoDB, and PostgreSQL</p>
                     </div>
-                    <div class="service-card glass-card">
-                        <div class="service-icon">☁️</div>
+                    <div class="service-card glass-card hover-lift">
+                        <div class="service-icon floating-icon">☁️</div>
                         <h4>Cloud & DevOps</h4>
                         <p>Deploying scalable applications with AWS, Docker, and modern CI/CD practices</p>
                     </div>
@@ -115,32 +131,13 @@
             </div>
             <div class="projects-grid">
                 <!-- Project 1 -->
-                <div class="project-card glass-card">
-                    <div class="project-image">
-                        <div class="project-placeholder">ABC Project</div>
-                    </div>
-                    <div class="project-content">
-                        <h3>ABC Project</h3>
-                        <p>Laravel web application framework with expressive, elegant syntax for modern web development featuring MVC architecture and RESTful APIs.</p>
-                        <div class="project-technologies">
-                            <span class="tech-tag">Laravel</span>
-                            <span class="tech-tag">PHP</span>
-                            <span class="tech-tag">MySQL</span>
-                            <span class="tech-tag">JavaScript</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/supuna97/ABC_Project" target="_blank" class="project-link">GitHub</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project 2 -->
-                <div class="project-card glass-card">
+                <div class="project-card glass-card stagger-animation">
                     <div class="project-image">
                         <div class="project-placeholder">Express.js Auth</div>
                     </div>
                     <div class="project-content">
                         <h3>Express.js Authentication</h3>
-                        <p>Authentication REST APIs with NodeJS Express, JWT token and MySQL. A comprehensive authentication system with password hashing and secure APIs.</p>
+                        <p>JWT-based authentication system with NodeJS and MySQL</p>
                         <div class="project-technologies">
                             <span class="tech-tag">NodeJS</span>
                             <span class="tech-tag">Express</span>
@@ -148,83 +145,98 @@
                             <span class="tech-tag">MySQL</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://github.com/supuna97/expressjs-auth" target="_blank" class="project-link">GitHub</a>
+                            <a href="https://github.com/supuna97" target="_blank" class="project-link">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="project-card glass-card stagger-animation">
+                    <div class="project-image">
+                        <div class="project-placeholder">ABC Project</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>ABC Project</h3>
+                        <p>Laravel web application framework with elegant syntax</p>
+                        <div class="project-technologies">
+                            <span class="tech-tag">Laravel</span>
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">Web Framework</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/supuna97" target="_blank" class="project-link">GitHub</a>
                         </div>
                     </div>
                 </div>
                 <!-- Project 3 -->
-                <div class="project-card glass-card">
+                <div class="project-card glass-card stagger-animation">
                     <div class="project-image">
                         <div class="project-placeholder">Express.js CRUD</div>
                     </div>
                     <div class="project-content">
                         <h3>Express.js CRUD Operations</h3>
-                        <p>REST APIs with MVC design pattern using MySQL connection. Complete CRUD operations with modern architecture and database management.</p>
+                        <p>REST APIs with MVC design pattern</p>
                         <div class="project-technologies">
-                            <span class="tech-tag">NodeJS</span>
                             <span class="tech-tag">Express</span>
-                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">NodeJS</span>
+                            <span class="tech-tag">REST API</span>
                             <span class="tech-tag">MVC</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://github.com/supuna97/express_js_crud_operation_apis" target="_blank" class="project-link">GitHub</a>
+                            <a href="https://github.com/supuna97" target="_blank" class="project-link">GitHub</a>
                         </div>
                     </div>
                 </div>
                 <!-- Project 4 -->
-                <div class="project-card glass-card">
+                <div class="project-card glass-card stagger-animation">
                     <div class="project-image">
                         <div class="project-placeholder">OAuth2 Auth</div>
                     </div>
                     <div class="project-content">
                         <h3>OAuth2 Authentication</h3>
-                        <p>Express.js with Passport OAuth2 using Google strategy for authentication. Secure OAuth2 integration with session management.</p>
+                        <p>Passport OAuth2 integration with Google strategy</p>
                         <div class="project-technologies">
-                            <span class="tech-tag">NodeJS</span>
-                            <span class="tech-tag">Express</span>
-                            <span class="tech-tag">Passport</span>
                             <span class="tech-tag">OAuth2</span>
+                            <span class="tech-tag">Passport</span>
+                            <span class="tech-tag">Google Auth</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://github.com/supuna97/expressjs-passport-oauth2" target="_blank" class="project-link">GitHub</a>
+                            <a href="https://github.com/supuna97" target="_blank" class="project-link">GitHub</a>
                         </div>
                     </div>
                 </div>
                 <!-- Project 5 -->
-                <div class="project-card glass-card">
+                <div class="project-card glass-card stagger-animation">
                     <div class="project-image">
                         <div class="project-placeholder">Mobile Backend</div>
                     </div>
                     <div class="project-content">
                         <h3>Mobile Accessories Backend</h3>
-                        <p>Spring Boot Java backend system for mobile accessories sales with comprehensive API development and sales management features.</p>
+                        <p>Spring Boot Java backend system</p>
                         <div class="project-technologies">
-                            <span class="tech-tag">Java</span>
                             <span class="tech-tag">Spring Boot</span>
-                            <span class="tech-tag">REST APIs</span>
-                            <span class="tech-tag">Database</span>
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">Backend</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://github.com/supuna97/mobile_accessories_sales_server" target="_blank" class="project-link">GitHub</a>
+                            <a href="https://github.com/supuna97" target="_blank" class="project-link">GitHub</a>
                         </div>
                     </div>
                 </div>
                 <!-- Project 6 -->
-                <div class="project-card glass-card">
+                <div class="project-card glass-card stagger-animation">
                     <div class="project-image">
                         <div class="project-placeholder">Knight Rider</div>
                     </div>
                     <div class="project-content">
                         <h3>Knight Rider Circuit</h3>
-                        <p>JavaScript-based Knight Rider film car circuit light system with interactive UI and creative animation design.</p>
+                        <p>JavaScript-based circuit light animation system</p>
                         <div class="project-technologies">
                             <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">HTML5</span>
-                            <span class="tech-tag">CSS3</span>
                             <span class="tech-tag">Animation</span>
+                            <span class="tech-tag">Circuit</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://github.com/supuna97/knight-rider-circuit" target="_blank" class="project-link">GitHub</a>
+                            <a href="https://github.com/supuna97" target="_blank" class="project-link">GitHub</a>
                         </div>
                     </div>
                 </div>
@@ -325,7 +337,7 @@
             </div>
             <div class="contact-content">
                 <div class="contact-form-container glass-card">
-                    <form class="contact-form">
+                    <form id="contact-form" class="contact-form">
                         <div class="form-group">
                             <input name="name" type="text" class="form-input glass-input" placeholder="Your Name" required>
                         </div>
@@ -346,7 +358,7 @@
                         <div class="contact-icon">📧</div>
                         <div class="contact-details">
                             <h4>Email</h4>
-                            <p>tarun.dwivedi@example.com</p>
+                            <p>anujdwivedi502@gmail.com</p>
                         </div>
                     </div>
                     <div class="contact-item glass-card">
