@@ -3,32 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarun Dwivedi - Full Stack Developer</title>
+    <title>Anuj Dwivedi – Deputy Manager – IT | Portfolio</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <!--  EmailJS library  -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 </head>
 <body>
-    <!-- Particle System -->
-    <div class="particles-container">
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-    </div>
+    <!-- Decorative particles -->
+    <div class="particles-container"></div>
 
     <!-- Floating Navigation -->
     <nav class="floating-nav">
         <div class="nav-container">
             <a href="#hero" class="nav-item active">Home</a>
             <a href="#about" class="nav-item">About</a>
+            <a href="#experience" class="nav-item">Experience</a>
             <a href="#projects" class="nav-item">Projects</a>
-            <a href="#skills" class="nav-item">Skills</a>
+            <a href="#education" class="nav-item">Education</a>
+            <a href="#awards" class="nav-item">Awards</a>
             <a href="#contact" class="nav-item">Contact</a>
         </div>
     </nav>
@@ -43,21 +35,13 @@
         </div>
         <div class="hero-content">
             <div class="glass-card hero-card">
-                <h1 class="hero-title">
-                    <span class="typing-text">Tarun Dwivedi</span>
-                </h1>
-                <p class="hero-subtitle">
-                    <span class="text-animate-delay bounce-in">Full Stack Developer</span>
-                </p>
-                <p class="hero-location">
-                    <span class="text-animate-delay-2 slide-in-left">Greater Noida, Uttar Pradesh, India</span>
-                </p>
-                <p class="hero-description">
-                    <span class="text-animate-delay-3 fade-in-up">Passionate Full Stack Developer & Tech Enthusiast fascinated by how computer technology has brought changes to our lives. I love exploring new tech stacks and leveraging them to build innovative solutions.</span>
-                </p>
+                <h1 class="hero-title"><span class="typing-text">Anuj Dwivedi</span></h1>
+                <p class="hero-subtitle text-animate-delay bounce-in">Deputy Manager – IT | Database Management Expert</p>
+                <p class="hero-location text-animate-delay-2 slide-in-left">Greater Noida, Uttar Pradesh, India</p>
+                <p class="hero-description text-animate-delay-3 fade-in-up">Results-driven IT professional with a B.E. in Computer Science and extensive experience in database management, disaster recovery, and automation. Transitioning into AI/ML roles with a strong foundation in database monitoring, performance optimization, and system integrity.</p>
                 <div class="hero-buttons">
                     <a href="#projects" class="btn btn-primary glass-btn glow-effect">View My Work</a>
-                    <a href="https://github.com/itarun2005" target="_blank" class="btn btn-secondary glass-btn pulse-effect">GitHub Profile</a>
+                    <a href="https://linkedin.com/in/anujdwivedi502" class="btn btn-secondary glass-btn pulse-effect" target="_blank">LinkedIn Profile</a>
                 </div>
             </div>
         </div>
@@ -68,55 +52,84 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">About Me</h2>
-                <p class="section-subtitle">Passionate about technology and innovation</p>
+                <p class="section-subtitle">Who I am & what I do</p>
             </div>
             <div class="about-content">
                 <div class="about-card glass-card">
                     <div class="about-image">
                         <div class="image-placeholder rotating-border">
-                            <span class="profile-initial">TD</span>
+                            <span class="profile-initial">AD</span>
                         </div>
                     </div>
                     <div class="about-text">
-                        <h3>Hello, I'm Tarun</h3>
-                        <p>A passionate programmer fascinated by how computer technology has brought changes to our lives. I love exploring new tech stacks and leveraging them to build innovative solutions that make a real impact.</p>
+                        <h3>Hello, I'm Anuj 👋</h3>
+                        <p>Deputy Manager – IT at Axis Bank with a passion for robust database architectures and disaster recovery strategies. I love blending my solid database expertise with cutting-edge AI & ML to build resilient, future-ready solutions.</p>
                         <div class="about-details">
-                            <div class="detail-item">
-                                <span class="detail-label">Location:</span>
-                                <span class="detail-value">Greater Noida, Uttar Pradesh, India</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label">Email:</span>
-                                <span class="detail-value">anujdwivedi502@gmail.com</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label">GitHub:</span>
-                                <span class="detail-value">github.com/itarun2005</span>
-                            </div>
+                            <div class="detail-item"><span class="detail-label">Email:</span><span class="detail-value">anujdwivedi.sae.comp@gmail.com</span></div>
+                            <div class="detail-item"><span class="detail-label">Phone:</span><span class="detail-value">+91 9560410919</span></div>
+                            <div class="detail-item"><span class="detail-label">LinkedIn:</span><span class="detail-value">linkedin.com/in/anujdwivedi502</span></div>
+                            <div class="detail-item"><span class="detail-label">Location:</span><span class="detail-value">Greater Noida, Uttar Pradesh, India</span></div>
                         </div>
                     </div>
                 </div>
-                <div class="services-grid">
-                    <div class="service-card glass-card hover-lift">
-                        <div class="service-icon floating-icon">🔧</div>
-                        <h4>Backend Development</h4>
-                        <p>Building robust server-side applications with Java, Python, PHP, and NodeJS</p>
+
+                <!-- Skills Grid inside About -->
+                <div class="skills-grid">
+                    <!-- Database -->
+                    <div class="skill-card glass-card">
+                        <div class="skill-info"><span class="skill-name">Databases</span><span class="skill-percentage">Expert</span></div>
+                        <ul class="skill-list">
+                            <li>MySQL</li><li>Oracle RAC</li><li>PostgreSQL</li><li>MongoDB</li>
+                        </ul>
                     </div>
-                    <div class="service-card glass-card hover-lift">
-                        <div class="service-icon floating-icon">💻</div>
-                        <h4>Frontend Development</h4>
-                        <p>Creating modern, responsive web applications with React, JavaScript, and CSS3</p>
+                    <!-- Programming -->
+                    <div class="skill-card glass-card">
+                        <div class="skill-info"><span class="skill-name">Programming</span><span class="skill-percentage">Advanced</span></div>
+                        <ul class="skill-list">
+                            <li>Java</li><li>Python</li><li>Kotlin</li><li>C++</li>
+                        </ul>
                     </div>
-                    <div class="service-card glass-card hover-lift">
-                        <div class="service-icon floating-icon">🗄️</div>
-                        <h4>Database Management</h4>
-                        <p>Designing and optimizing databases with MySQL, MongoDB, and PostgreSQL</p>
+                    <!-- Technologies -->
+                    <div class="skill-card glass-card">
+                        <div class="skill-info"><span class="skill-name">Technologies</span><span class="skill-percentage">Advanced</span></div>
+                        <ul class="skill-list">
+                            <li>Machine Learning</li><li>Deep Learning</li><li>CNN / GAN</li><li>AWS</li>
+                        </ul>
                     </div>
-                    <div class="service-card glass-card hover-lift">
-                        <div class="service-icon floating-icon">☁️</div>
-                        <h4>Cloud & DevOps</h4>
-                        <p>Deploying scalable applications with AWS, Docker, and modern CI/CD practices</p>
+                    <!-- Tools -->
+                    <div class="skill-card glass-card">
+                        <div class="skill-info"><span class="skill-name">Tools & Practices</span><span class="skill-percentage">Pro</span></div>
+                        <ul class="skill-list">
+                            <li>DRM Tool Management</li><li>Performance Tuning</li><li>Patch Management</li><li>High Availability</li>
+                        </ul>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Experience</h2>
+                <p class="section-subtitle">My professional journey</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item glass-card">
+                    <h3>Deputy Manager – IT <span>@ Axis Bank</span></h3>
+                    <span class="timeline-date">Aug 2023 – Present</span>
+                    <p>Database monitoring for 400+ applications improving efficiency from 28 % to 97 %. Deployed critical patches, supported migrations for 200+ applications, and automated disaster recovery achieving 2–5 minute RTO.</p>
+                </div>
+                <div class="timeline-item glass-card">
+                    <h3>Software Engineer Associate (Trainee) <span>@ Amdocs</span></h3>
+                    <span class="timeline-date">Feb 2023 – Aug 2023</span>
+                    <p>Worked on Java, Python, cloud infrastructure, Unix, and DBMS—laying a strong foundation in full-stack delivery pipelines.</p>
+                </div>
+                <div class="timeline-item glass-card">
+                    <h3>Software Trainee <span>@ Persistent Systems</span></h3>
+                    <span class="timeline-date">Jun 2022 – Aug 2022</span>
+                    <p>Built hands-on expertise in C++, Python, MySQL, Linux, OS concepts, and general DBMS fundamentals.</p>
                 </div>
             </div>
         </div>
@@ -127,208 +140,81 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Featured Projects</h2>
-                <p class="section-subtitle">A showcase of my latest work and creative solutions</p>
+                <p class="section-subtitle">Things I've built & shipped</p>
             </div>
             <div class="projects-grid">
-                <!-- Project 1 -->
+                <!-- Project cards (5) -->
                 <div class="project-card glass-card stagger-animation">
-                    <div class="project-image">
-                        <img src="https://pplx-res.cloudinary.com/image/upload/v1752833109/pplx_project_search_images/2b060e6e62589a6527e12b8d28d6437b5471b3f5.jpg" alt="Express.js Authentication" class="project-img">
-                    </div>
+                    <div class="project-image"></div>
                     <div class="project-content">
-                        <h3>Express.js Authentication</h3>
-                        <p>JWT-based authentication system with NodeJS and MySQL</p>
-                        <div class="project-technologies">
-                            <span class="tech-tag">NodeJS</span>
-                            <span class="tech-tag">Express</span>
-                            <span class="tech-tag">JWT</span>
-                            <span class="tech-tag">MySQL</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/supuna97/express-js-auth" target="_blank" class="project-link">GitHub</a>
-                        </div>
+                        <h3>Database Monitoring & DRM Tool Management</h3>
+                        <p>Managed monitoring for 400+ applications and reached 97 % efficiency.</p>
+                        <div class="project-technologies"><span class="tech-tag">Oracle RAC</span><span class="tech-tag">MySQL</span><span class="tech-tag">DRM Tool</span></div>
                     </div>
                 </div>
-                <!-- Project 2 -->
                 <div class="project-card glass-card stagger-animation">
-                    <div class="project-image">
-                        <img src="https://pplx-res.cloudinary.com/image/upload/v1752833109/pplx_project_search_images/18b20fe5e3cbb01e6deaf2a8c343d315d79f14e2.jpg" alt="ABC Project Laravel" class="project-img">
-                    </div>
+                    <div class="project-image"></div>
                     <div class="project-content">
-                        <h3>ABC Project</h3>
-                        <p>Laravel web application framework with elegant syntax</p>
-                        <div class="project-technologies">
-                            <span class="tech-tag">Laravel</span>
-                            <span class="tech-tag">PHP</span>
-                            <span class="tech-tag">MySQL</span>
-                            <span class="tech-tag">Bootstrap</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/supuna97/ABC_Project" target="_blank" class="project-link">GitHub</a>
-                        </div>
+                        <h3>Onboarding on DRM Tool</h3>
+                        <p>Led automation of DR activities achieving an RTO of just 2–5 minutes.</p>
+                        <div class="project-technologies"><span class="tech-tag">Automation</span><span class="tech-tag">RBI Compliance</span></div>
                     </div>
                 </div>
-                <!-- Project 3 -->
                 <div class="project-card glass-card stagger-animation">
-                    <div class="project-image">
-                        <img src="https://pplx-res.cloudinary.com/image/upload/v1752833109/pplx_project_search_images/939fe9695fe22ba243e620b84f0cba397cb54d58.jpg" alt="Express.js CRUD Operations" class="project-img">
-                    </div>
+                    <div class="project-image"></div>
                     <div class="project-content">
-                        <h3>Express.js CRUD Operations</h3>
-                        <p>REST APIs with MVC design pattern</p>
-                        <div class="project-technologies">
-                            <span class="tech-tag">Express</span>
-                            <span class="tech-tag">NodeJS</span>
-                            <span class="tech-tag">REST API</span>
-                            <span class="tech-tag">MVC</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/supuna97/express-js-crud" target="_blank" class="project-link">GitHub</a>
-                        </div>
+                        <h3>DRM Tool Enhancement for MySQL</h3>
+                        <p>Enabled comprehensive DR capabilities for 30+ MySQL apps.</p>
+                        <div class="project-technologies"><span class="tech-tag">MySQL</span><span class="tech-tag">DRM Tool</span></div>
                     </div>
                 </div>
-                <!-- Project 4 -->
                 <div class="project-card glass-card stagger-animation">
-                    <div class="project-image">
-                        <img src="https://pplx-res.cloudinary.com/image/upload/v1748921318/pplx_project_search_images/199e0c3a397e3cb605f638a6f201d2cb9f21d9ee.jpg" alt="OAuth2 Authentication" class="project-img">
-                    </div>
+                    <div class="project-image"></div>
                     <div class="project-content">
-                        <h3>OAuth2 Authentication</h3>
-                        <p>Passport OAuth2 integration with Google strategy</p>
-                        <div class="project-technologies">
-                            <span class="tech-tag">OAuth2</span>
-                            <span class="tech-tag">Passport</span>
-                            <span class="tech-tag">Google API</span>
-                            <span class="tech-tag">NodeJS</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/supuna97/oauth2-auth" target="_blank" class="project-link">GitHub</a>
-                        </div>
+                        <h3>Image Restoration</h3>
+                        <p>CNN-based ML model that restores damaged & corrupted images.</p>
+                        <div class="project-technologies"><span class="tech-tag">Python</span><span class="tech-tag">CNN</span><span class="tech-tag">GAN</span></div>
                     </div>
                 </div>
-                <!-- Project 5 -->
                 <div class="project-card glass-card stagger-animation">
-                    <div class="project-image">
-                        <img src="https://pplx-res.cloudinary.com/image/upload/v1752833109/pplx_project_search_images/471da54929a7dc176a8fcdf3c18d5cb3cc09a1ba.jpg" alt="Mobile Accessories Backend" class="project-img">
-                    </div>
+                    <div class="project-image"></div>
                     <div class="project-content">
-                        <h3>Mobile Accessories Backend</h3>
-                        <p>Spring Boot Java backend system</p>
-                        <div class="project-technologies">
-                            <span class="tech-tag">Spring Boot</span>
-                            <span class="tech-tag">Java</span>
-                            <span class="tech-tag">MySQL</span>
-                            <span class="tech-tag">REST API</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/supuna97/mobile-accessories-backend" target="_blank" class="project-link">GitHub</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project 6 -->
-                <div class="project-card glass-card stagger-animation">
-                    <div class="project-image">
-                        <img src="https://pplx-res.cloudinary.com/image/upload/v1748684333/pplx_project_search_images/eba6accd2bd17bf8113ced18c32cf5a570da3471.jpg" alt="Knight Rider Circuit" class="project-img">
-                    </div>
-                    <div class="project-content">
-                        <h3>Knight Rider Circuit</h3>
-                        <p>JavaScript-based circuit light animation system</p>
-                        <div class="project-technologies">
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">HTML5</span>
-                            <span class="tech-tag">CSS3</span>
-                            <span class="tech-tag">Animation</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/supuna97/knight-rider-circuit" target="_blank" class="project-link">GitHub</a>
-                        </div>
+                        <h3>Optical Character Recognition App</h3>
+                        <p>ML-powered OCR solution with Android front-end.</p>
+                        <div class="project-technologies"><span class="tech-tag">Kotlin</span><span class="tech-tag">Android Studio</span><span class="tech-tag">ML</span></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
+    <!-- Education Section -->
+    <section id="education" class="education">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Skills & Expertise</h2>
-                <p class="section-subtitle">Technologies and tools I work with</p>
+                <h2 class="section-title">Education</h2>
+                <p class="section-subtitle">Academic background</p>
             </div>
-            <div class="skills-grid">
-                <div class="skill-card glass-card">
-                    <div class="skill-info">
-                        <span class="skill-name">Java & Spring Boot</span>
-                        <span class="skill-percentage">90%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-width="90"></div>
-                    </div>
-                </div>
-                <div class="skill-card glass-card">
-                    <div class="skill-info">
-                        <span class="skill-name">Python</span>
-                        <span class="skill-percentage">85%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-width="85"></div>
-                    </div>
-                </div>
-                <div class="skill-card glass-card">
-                    <div class="skill-info">
-                        <span class="skill-name">NodeJS & Express</span>
-                        <span class="skill-percentage">88%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-width="88"></div>
-                    </div>
-                </div>
-                <div class="skill-card glass-card">
-                    <div class="skill-info">
-                        <span class="skill-name">PHP & Laravel</span>
-                        <span class="skill-percentage">82%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-width="82"></div>
-                    </div>
-                </div>
-                <div class="skill-card glass-card">
-                    <div class="skill-info">
-                        <span class="skill-name">React & JavaScript</span>
-                        <span class="skill-percentage">87%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-width="87"></div>
-                    </div>
-                </div>
-                <div class="skill-card glass-card">
-                    <div class="skill-info">
-                        <span class="skill-name">MySQL & MongoDB</span>
-                        <span class="skill-percentage">85%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-width="85"></div>
-                    </div>
-                </div>
-                <div class="skill-card glass-card">
-                    <div class="skill-info">
-                        <span class="skill-name">AWS & Docker</span>
-                        <span class="skill-percentage">78%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-width="78"></div>
-                    </div>
-                </div>
-                <div class="skill-card glass-card">
-                    <div class="skill-info">
-                        <span class="skill-name">DevOps & CI/CD</span>
-                        <span class="skill-percentage">75%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-width="75"></div>
-                    </div>
-                </div>
+            <div class="education-card glass-card">
+                <h3>B.E. in Computer Science</h3>
+                <p>Savitribai Phule Pune University <span>•</span> 2019 – 2023</p>
+                <p>CGPA : 8.41 / 10</p>
             </div>
+        </div>
+    </section>
+
+    <!-- Awards Section -->
+    <section id="awards" class="awards">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Awards & Recognition</h2>
+                <p class="section-subtitle">A few highlights I'm proud of</p>
+            </div>
+            <ul class="awards-list">
+                <li class="glass-card">Best Paper Award – National Conference on Multidisciplinary Research</li>
+                <li class="glass-card">All-India Rank 10 – IoT Machine Learning Contest</li>
+                <li class="glass-card">3rd Position – Microsoft Power Apps Hackathon</li>
+            </ul>
         </div>
     </section>
 
@@ -337,52 +223,22 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Get In Touch</h2>
-                <p class="section-subtitle">Let's create something amazing together</p>
+                <p class="section-subtitle">Let's build something exceptional</p>
             </div>
             <div class="contact-content">
                 <div class="contact-form-container glass-card">
                     <form id="contact-form" class="contact-form">
-                        <div class="form-group">
-                            <input name="name" type="text" class="form-input glass-input" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input name="email" type="email" class="form-input glass-input" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <input name="subject" type="text" class="form-input glass-input" placeholder="Subject" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea name="message" class="form-input glass-input" rows="5" placeholder="Your Message" required></textarea>
-                        </div>
+                        <div class="form-group"><input name="name" class="form-input glass-input" type="text" placeholder="Your Name" required></div>
+                        <div class="form-group"><input name="email" class="form-input glass-input" type="email" placeholder="Your Email" required></div>
+                        <div class="form-group"><input name="subject" class="form-input glass-input" type="text" placeholder="Subject" required></div>
+                        <div class="form-group"><textarea name="message" class="form-input glass-input" rows="5" placeholder="Your Message" required></textarea></div>
                         <button type="submit" class="btn btn-primary glass-btn form-submit">Send Message</button>
                     </form>
                 </div>
                 <div class="contact-info">
-                    <div class="contact-item glass-card">
-                        <div class="contact-icon">📧</div>
-                        <div class="contact-details">
-                            <h4>Email</h4>
-                            <p>anujdwivedi502@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-item glass-card">
-                        <div class="contact-icon">📍</div>
-                        <div class="contact-details">
-                            <h4>Location</h4>
-                            <p>Greater Noida, Uttar Pradesh, India</p>
-                        </div>
-                    </div>
-                    <div class="contact-item glass-card">
-                        <div class="contact-icon">💻</div>
-                        <div class="contact-details">
-                            <h4>GitHub</h4>
-                            <p>github.com/itarun2005</p>
-                        </div>
-                    </div>
-                    <div class="social-links">
-                        <a href="https://github.com/itarun2005" target="_blank" class="social-link glass-btn">GitHub</a>
-                        <a href="https://linkedin.com/in/tarun-dwivedi" target="_blank" class="social-link glass-btn">LinkedIn</a>
-                    </div>
+                    <div class="contact-item glass-card"><div class="contact-icon">📧</div><div class="contact-details"><h4>Email</h4><p>anujdwivedi.sae.comp@gmail.com</p></div></div>
+                    <div class="contact-item glass-card"><div class="contact-icon">📞</div><div class="contact-details"><h4>Phone</h4><p>+91 9560410919</p></div></div>
+                    <div class="contact-item glass-card"><div class="contact-icon">🌐</div><div class="contact-details"><h4>LinkedIn</h4><p><a href="https://linkedin.com/in/anujdwivedi502" target="_blank">linkedin.com/in/anujdwivedi502</a></p></div></div>
                 </div>
             </div>
         </div>
