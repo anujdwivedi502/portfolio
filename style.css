@@ -708,7 +708,7 @@ select.form-control {
 }
 
 /* END PERPLEXITY DESIGN SYSTEM */
-/* Green & Yellow Liquid Glass Portfolio - Enhanced Animations */
+/* Green & Yellow Liquid Glass Portfolio - Enhanced with Real Images */
 
 /* Global Styles */
 * {
@@ -1320,16 +1320,28 @@ section {
 
 .project-image {
     width: 100%;
-    height: 200px;
+    height: 220px;
     overflow: hidden;
     border-radius: 12px 12px 0 0;
     background: linear-gradient(135deg, rgba(0, 255, 127, 0.2), rgba(255, 215, 0, 0.2));
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
+}
+
+.project-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    border-radius: 12px 12px 0 0;
+}
+
+.project-card:hover .project-img {
+    transform: scale(1.05);
 }
 
 .project-placeholder {
@@ -1540,6 +1552,12 @@ section {
 .form-submit:hover {
     transform: translateY(-3px) scale(1.05);
     box-shadow: 0 15px 40px rgba(0, 255, 127, 0.4);
+}
+
+.form-submit:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
 }
 
 .contact-info {

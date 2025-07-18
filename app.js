@@ -1,7 +1,7 @@
-// Green & Yellow Portfolio - Fixed JavaScript
+// Green & Yellow Portfolio - Fixed JavaScript with Working Functionality
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize core functionality
+    // Initialize all functionality
     initSmoothScrolling();
     initNavigationHighlight();
     initSkillBars();
@@ -12,6 +12,9 @@ document.addEventListener('DOMContentLoaded', function() {
     initTypingAnimation();
     initParticleSystem();
     initExternalLinks();
+    initProjectCardAnimations();
+    
+    console.log('Portfolio loaded successfully');
 });
 
 // Fixed Typing Animation
@@ -32,8 +35,19 @@ function initTypingAnimation() {
             index++;
             setTimeout(typeText, typeSpeed);
         } else {
+            // Blinking cursor effect
             setTimeout(() => {
-                typingElement.style.borderRight = 'none';
+                let blinkCount = 0;
+                const blinkInterval = setInterval(() => {
+                    typingElement.style.borderRight = 
+                        typingElement.style.borderRight === 'none' ? 
+                        '3px solid #1D1D1F' : 'none';
+                    blinkCount++;
+                    if (blinkCount > 6) {
+                        clearInterval(blinkInterval);
+                        typingElement.style.borderRight = 'none';
+                    }
+                }, 500);
             }, 1000);
         }
     }
@@ -50,6 +64,8 @@ function initSmoothScrolling() {
             e.preventDefault();
             
             const targetId = this.getAttribute('href');
+            if (!targetId || targetId === '#') return;
+            
             const targetSection = document.querySelector(targetId);
             
             if (targetSection) {
@@ -73,30 +89,21 @@ function initNavigationHighlight() {
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.nav-item');
     
-    let ticking = false;
-    
     function updateActiveNav() {
-        if (ticking) return;
-        ticking = true;
+        const scrollY = window.pageYOffset;
         
-        requestAnimationFrame(() => {
-            const scrollY = window.pageYOffset;
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 150;
+            const sectionBottom = sectionTop + section.offsetHeight;
             
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 150;
-                const sectionBottom = sectionTop + section.offsetHeight;
+            if (scrollY >= sectionTop && scrollY < sectionBottom) {
+                navLinks.forEach(link => link.classList.remove('active'));
                 
-                if (scrollY >= sectionTop && scrollY < sectionBottom) {
-                    navLinks.forEach(link => link.classList.remove('active'));
-                    
-                    const correspondingNavLink = document.querySelector(`.nav-item[href="#${section.id}"]`);
-                    if (correspondingNavLink) {
-                        correspondingNavLink.classList.add('active');
-                    }
+                const correspondingNavLink = document.querySelector(`.nav-item[href="#${section.id}"]`);
+                if (correspondingNavLink) {
+                    correspondingNavLink.classList.add('active');
                 }
-            });
-            
-            ticking = false;
+            }
         });
     }
     
@@ -106,13 +113,43 @@ function initNavigationHighlight() {
 
 // Fixed External Links
 function initExternalLinks() {
+    // Handle all external links
     const externalLinks = document.querySelectorAll('a[href^="https://"]');
     
     externalLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
+            e.stopPropagation();
             const url = this.getAttribute('href');
-            window.open(url, '_blank', 'noopener,noreferrer');
+            if (url && url !== '#') {
+                window.open(url, '_blank', 'noopener,noreferrer');
+            }
+        });
+    });
+    
+    // Handle project links specifically
+    const projectLinks = document.querySelectorAll('.project-link');
+    projectLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const url = this.getAttribute('href');
+            if (url && url !== '#') {
+                window.open(url, '_blank', 'noopener,noreferrer');
+            }
+        });
+    });
+    
+    // Handle social links
+    const socialLinks = document.querySelectorAll('.social-link');
+    socialLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const url = this.getAttribute('href');
+            if (url && url !== '#') {
+                window.open(url, '_blank', 'noopener,noreferrer');
+            }
         });
     });
 }
@@ -156,8 +193,7 @@ function initScrollAnimations() {
             }
         });
     }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.1
     });
     
     animatedElements.forEach(element => {
@@ -179,21 +215,29 @@ function initFormHandler() {
             
             // Get form data
             const formData = new FormData(contactForm);
-            const name = formData.get('name').trim();
-            const email = formData.get('email').trim();
-            const subject = formData.get('subject').trim();
-            const message = formData.get('message').trim();
+            const name = formData.get('name')?.trim() || '';
+            const email = formData.get('email')?.trim() || '';
+            const subject = formData.get('subject')?.trim() || '';
+            const message = formData.get('message')?.trim() || '';
             
-            // Basic validation
-            if (!name || !email || !subject || !message) {
-                showNotification('Please fill in all fields.', 'error');
+            // Validation
+            if (!name || name.length < 2) {
+                showNotification('Please enter a valid name (minimum 2 characters).', 'error');
                 return;
             }
             
-            // Email validation
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
+            if (!email || !isValidEmail(email)) {
                 showNotification('Please enter a valid email address.', 'error');
+                return;
+            }
+            
+            if (!subject || subject.length < 3) {
+                showNotification('Please enter a subject (minimum 3 characters).', 'error');
+                return;
+            }
+            
+            if (!message || message.length < 10) {
+                showNotification('Please enter a message (minimum 10 characters).', 'error');
                 return;
             }
             
@@ -202,7 +246,7 @@ function initFormHandler() {
             submitButton.textContent = 'Sending...';
             submitButton.disabled = true;
             
-            // Send email
+            // Simulate email sending and then create mailto link
             setTimeout(() => {
                 // Create mailto link
                 const mailtoLink = `mailto:anujdwivedi502@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
@@ -210,15 +254,70 @@ function initFormHandler() {
                 // Open mailto
                 window.open(mailtoLink, '_blank');
                 
-                // Reset form
+                // Reset form and show success message
                 contactForm.reset();
-                showNotification('Message prepared! Your email client should open.', 'success');
+                showNotification('Email client opened successfully! Your message has been prepared.', 'success');
                 
                 // Reset button
                 submitButton.textContent = originalText;
                 submitButton.disabled = false;
-            }, 1000);
+            }, 1500);
         });
+        
+        // Real-time validation
+        const inputs = contactForm.querySelectorAll('input, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('input', function() {
+                validateInput(this);
+            });
+        });
+    }
+}
+
+// Email validation helper
+function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+// Real-time input validation
+function validateInput(input) {
+    const value = input.value.trim();
+    
+    // Remove previous validation styles
+    input.style.borderColor = '';
+    
+    if (value) {
+        switch (input.name) {
+            case 'email':
+                if (isValidEmail(value)) {
+                    input.style.borderColor = 'rgba(0, 255, 127, 0.6)';
+                } else {
+                    input.style.borderColor = 'rgba(255, 68, 68, 0.6)';
+                }
+                break;
+            case 'name':
+                if (value.length >= 2) {
+                    input.style.borderColor = 'rgba(0, 255, 127, 0.6)';
+                } else {
+                    input.style.borderColor = 'rgba(255, 68, 68, 0.6)';
+                }
+                break;
+            case 'subject':
+                if (value.length >= 3) {
+                    input.style.borderColor = 'rgba(0, 255, 127, 0.6)';
+                } else {
+                    input.style.borderColor = 'rgba(255, 68, 68, 0.6)';
+                }
+                break;
+            case 'message':
+                if (value.length >= 10) {
+                    input.style.borderColor = 'rgba(0, 255, 127, 0.6)';
+                } else {
+                    input.style.borderColor = 'rgba(255, 68, 68, 0.6)';
+                }
+                break;
+        }
     }
 }
 
@@ -268,23 +367,14 @@ function initMicroInteractions() {
 function initBackgroundEffects() {
     const floatingOrbs = document.querySelectorAll('.floating-orb');
     
-    let ticking = false;
-    
     function updateParallax() {
-        if (ticking) return;
-        ticking = true;
+        const scrolled = window.pageYOffset;
+        const rate = scrolled * -0.3;
         
-        requestAnimationFrame(() => {
-            const scrolled = window.pageYOffset;
-            const rate = scrolled * -0.3;
-            
-            floatingOrbs.forEach((orb, index) => {
-                const speed = (index + 1) * 0.2;
-                const translateY = rate * speed;
-                orb.style.transform = `translateY(${translateY}px)`;
-            });
-            
-            ticking = false;
+        floatingOrbs.forEach((orb, index) => {
+            const speed = (index + 1) * 0.2;
+            const translateY = rate * speed;
+            orb.style.transform = `translateY(${translateY}px)`;
         });
     }
     
@@ -321,10 +411,14 @@ function initParticleSystem() {
         particle.style.animationDelay = randomDelay + 's';
         particle.style.animationDuration = randomDuration + 's';
         
-        // Add glow effect
-        particle.style.boxShadow = '0 0 6px rgba(0, 255, 127, 0.8)';
+        // Enhanced visibility
+        particle.style.opacity = '1';
+        particle.style.zIndex = '1';
         
-        // Random color
+        // Enhanced glow effect
+        particle.style.boxShadow = '0 0 8px rgba(0, 255, 127, 0.8)';
+        
+        // Dynamic colors
         const colors = [
             'rgba(0, 255, 127, 0.8)',
             'rgba(255, 215, 0, 0.8)',
@@ -334,46 +428,17 @@ function initParticleSystem() {
         
         const randomColor = colors[Math.floor(Math.random() * colors.length)];
         particle.style.background = `radial-gradient(circle, ${randomColor} 0%, transparent 70%)`;
+        
+        // Color changing animation
+        setInterval(() => {
+            const newColor = colors[Math.floor(Math.random() * colors.length)];
+            particle.style.background = `radial-gradient(circle, ${newColor} 0%, transparent 70%)`;
+        }, 3000 + Math.random() * 2000);
     });
 }
 
-// Fixed Notification System
-function showNotification(message, type = 'info') {
-    // Remove existing notifications
-    const existingNotifications = document.querySelectorAll('.notification');
-    existingNotifications.forEach(notification => {
-        notification.remove();
-    });
-    
-    const notification = document.createElement('div');
-    notification.className = `notification notification-${type}`;
-    notification.innerHTML = `
-        <div style="display: flex; align-items: center; gap: 10px;">
-            <span style="font-size: 18px;">${type === 'success' ? '✅' : '❌'}</span>
-            <span>${message}</span>
-        </div>
-    `;
-    
-    document.body.appendChild(notification);
-    
-    // Show notification
-    setTimeout(() => {
-        notification.classList.add('show');
-    }, 100);
-    
-    // Hide notification
-    setTimeout(() => {
-        notification.classList.remove('show');
-        setTimeout(() => {
-            if (document.body.contains(notification)) {
-                document.body.removeChild(notification);
-            }
-        }, 300);
-    }, 4000);
-}
-
-// Initialize stagger animations for project cards
-document.addEventListener('DOMContentLoaded', function() {
+// Fixed Project Card Animations
+function initProjectCardAnimations() {
     const projectCards = document.querySelectorAll('.project-card.stagger-animation');
     
     const projectObserver = new IntersectionObserver((entries) => {
@@ -399,15 +464,64 @@ document.addEventListener('DOMContentLoaded', function() {
     if (projectsGrid) {
         projectObserver.observe(projectsGrid);
     }
-});
+}
 
-// Simple page load handler
+// Fixed Notification System
+function showNotification(message, type = 'info') {
+    // Remove existing notifications
+    const existingNotifications = document.querySelectorAll('.notification');
+    existingNotifications.forEach(notification => {
+        notification.remove();
+    });
+    
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    
+    const icon = type === 'success' ? '✅' : type === 'error' ? '❌' : 'ℹ️';
+    
+    notification.innerHTML = `
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="font-size: 18px;">${icon}</span>
+            <span>${message}</span>
+        </div>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Show notification
+    setTimeout(() => {
+        notification.classList.add('show');
+    }, 100);
+    
+    // Hide notification
+    setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => {
+            if (document.body.contains(notification)) {
+                document.body.removeChild(notification);
+            }
+        }, 300);
+    }, 5000);
+}
+
+// Page load handler
 window.addEventListener('load', function() {
     document.body.classList.add('loaded');
-    console.log('Portfolio loaded successfully');
+    
+    // Show welcome message
+    setTimeout(() => {
+        showNotification('Welcome to my portfolio! 🚀', 'success');
+    }, 1000);
 });
 
-// Simplified error handling
+// Error handling
 window.addEventListener('error', function(e) {
-    console.error('Error:', e.error);
+    console.error('JavaScript Error:', e.error);
 });
+
+// Export functions for testing
+window.portfolioFunctions = {
+    showNotification,
+    isValidEmail,
+    validateInput
+};
