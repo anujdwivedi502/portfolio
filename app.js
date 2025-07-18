@@ -1,8 +1,5 @@
-// Anuj Dwivedi Portfolio - Interactive JavaScript
+// Anuj Dwivedi Portfolio - Fixed Interactive JavaScript
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize EmailJS
-    emailjs.init("YOUR_USER_ID"); // Replace with actual EmailJS user ID
-    
     // Initialize all functionality
     initTypingAnimation();
     initSmoothScrolling();
@@ -12,9 +9,62 @@ document.addEventListener('DOMContentLoaded', function() {
     initFormHandler();
     initMicroInteractions();
     initFloatingOrbs();
+    initExternalLinks();
+    initHeroButtons();
     
     console.log('Portfolio loaded successfully');
 });
+
+// Fixed Hero Buttons
+function initHeroButtons() {
+    const viewWorkBtn = document.querySelector('.hero-buttons .btn-primary');
+    const linkedinBtn = document.querySelector('.hero-buttons .btn-secondary');
+    
+    if (viewWorkBtn) {
+        viewWorkBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const projectsSection = document.querySelector('#projects');
+            if (projectsSection) {
+                const offsetTop = projectsSection.offsetTop - 100;
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    }
+    
+    if (linkedinBtn) {
+        linkedinBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.open('https://linkedin.com/in/anujdwivedi502', '_blank', 'noopener,noreferrer');
+        });
+    }
+}
+
+// Fixed External Links
+function initExternalLinks() {
+    // Handle all external links
+    const externalLinks = document.querySelectorAll('a[href^="https://"]');
+    externalLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const url = this.getAttribute('href');
+            if (url && url !== '#') {
+                window.open(url, '_blank', 'noopener,noreferrer');
+            }
+        });
+    });
+    
+    // Handle LinkedIn links specifically
+    const linkedinLinks = document.querySelectorAll('a[href*="linkedin.com"]');
+    linkedinLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.open('https://linkedin.com/in/anujdwivedi502', '_blank', 'noopener,noreferrer');
+        });
+    });
+}
 
 // Typing Animation for Hero Title
 function initTypingAnimation() {
@@ -54,7 +104,7 @@ function initTypingAnimation() {
     setTimeout(typeText, 1000);
 }
 
-// Smooth Scrolling Navigation
+// Fixed Smooth Scrolling Navigation
 function initSmoothScrolling() {
     const navLinks = document.querySelectorAll('.nav-item');
     
@@ -105,7 +155,7 @@ function initNavigationHighlight() {
         });
     }
     
-    window.addEventListener('scroll', updateActiveNav);
+    window.addEventListener('scroll', throttle(updateActiveNav, 16));
     updateActiveNav();
 }
 
@@ -198,7 +248,7 @@ function initScrollAnimations() {
     });
 }
 
-// Form Handler with EmailJS
+// Fixed Form Handler
 function initFormHandler() {
     const contactForm = document.getElementById('contact-form');
     const submitButton = document.querySelector('.form-submit');
@@ -240,18 +290,9 @@ function initFormHandler() {
             submitButton.textContent = 'Sending...';
             submitButton.disabled = true;
             
-            // Send email using EmailJS
-            const templateParams = {
-                from_name: name,
-                from_email: email,
-                subject: subject,
-                message: message,
-                to_email: 'anujdwivedi.sae.comp@gmail.com'
-            };
-            
-            // For now, simulate email sending with mailto fallback
+            // Send email using mailto
             setTimeout(() => {
-                // Create mailto link as fallback
+                // Create mailto link
                 const mailtoLink = `mailto:anujdwivedi.sae.comp@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
                 
                 // Open mailto
@@ -264,7 +305,7 @@ function initFormHandler() {
                 // Reset button
                 submitButton.textContent = originalText;
                 submitButton.disabled = false;
-            }, 1500);
+            }, 1000);
         });
         
         // Real-time validation
@@ -372,18 +413,6 @@ function initMicroInteractions() {
             this.style.background = 'rgba(255, 255, 255, 0.15)';
         });
     });
-    
-    // Handle external links
-    const externalLinks = document.querySelectorAll('a[href^="https://"]');
-    externalLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const url = this.getAttribute('href');
-            if (url && url !== '#') {
-                window.open(url, '_blank', 'noopener,noreferrer');
-            }
-        });
-    });
 }
 
 // Floating Orbs Animation
@@ -405,7 +434,7 @@ function initFloatingOrbs() {
     });
     
     // Scroll parallax effect
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', throttle(function() {
         const scrolled = window.pageYOffset;
         
         orbs.forEach((orb, index) => {
@@ -413,7 +442,7 @@ function initFloatingOrbs() {
             const yPos = scrolled * speed;
             orb.style.transform = `translateY(${yPos}px)`;
         });
-    });
+    }, 16));
 }
 
 // Notification System
@@ -492,11 +521,6 @@ window.addEventListener('load', function() {
 window.addEventListener('error', function(e) {
     console.error('JavaScript Error:', e.error);
 });
-
-// Performance optimization
-window.addEventListener('scroll', throttle(function() {
-    // Throttled scroll events handled in other functions
-}, 16));
 
 // Throttle function for performance
 function throttle(func, limit) {
